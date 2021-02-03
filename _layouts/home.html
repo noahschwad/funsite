@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<div class="home">
+  <!-- {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%} -->
+
+  {{ content }}
+
+  {%- if site.posts.size > 0 -%}
+    <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: flex-start; margin: 0 -10px;">
+      {%- for post in site.posts -%}
+      <a style="font-size: 18px; color: {% cycle 'green', 'blue' %} !important;" class="post-link" href="{{ post.url | relative_url }}">
+        <div style="width: 233px; margin: 0 10px;">
+          {%- if post.thumbnail -%}
+            <br>
+            <div style="height: 233px; background-image: url('{{ post.thumbnail }}'); background-position: center; background-size: cover;"></div>
+          {%- endif -%}
+          <h3 style="margin-bottom: -5px; margin-top: 5px;">
+              {{ post.title | escape }}
+          </h3>
+        </a>
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+
+
+    <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p> -->
+  {%- endif -%}
+
+</div>
