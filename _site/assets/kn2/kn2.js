@@ -23,7 +23,7 @@ function setup() {
   erasenewy = -100;
   erasedir  = "right";
   erasergo = true;
-  eraserspeed = 12;
+  eraserspeed = 6;
 
 }
 
@@ -95,10 +95,10 @@ function eraser() {
 
     //moves eraser
     if (erasedir == "right") {
-      erasex += eraserspeed;
+      erasex += eraserspeed - random(2);
       erasey -= (eraseoldy-erasenewy)/(cWidth/eraserspeed) - (eraserspeed*sin(frameCount/2))/random(4);
     } else {
-      erasex -= eraserspeed;
+      erasex -= eraserspeed - random(2);
       erasey -= (eraseoldy-erasenewy)/(cWidth/eraserspeed) - (eraserspeed*sin(frameCount/2))/random(4);
     }
 
